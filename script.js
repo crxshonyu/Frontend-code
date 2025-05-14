@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const days = ["THU", "FRI", "SAT", "SUN", "MON", "WED", "TUE"];
 
     const stemImg = document.createElement("img");
-    stemImg.src = "grape_stem.png";
+    stemImg.src = "image/grape_stem.png";
     stemImg.alt = "포도꽁다리";
     stemImg.className = "grape-stem";
     cluster.appendChild(stemImg);
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dateElement.classList.add("date");
             dateElement.innerHTML = `
                 <div class="date-number">${i}</div>
-                <img class="date-circle" src="circle.png" alt="circle">
+                <img class="date-circle" src="image/circle.png" alt="circle">
             `;
             calendarDates.appendChild(dateElement);
         }

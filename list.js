@@ -119,7 +119,7 @@ function showSortModal() {
         };
     });
 
-    const confirmBtn = document.querySelector('#sortModal .confirm-btn'); // #sortModal 내의 confirm-btn 선택
+    const confirmBtn = document.querySelector('#sortModal .confirm-btn');
     if (confirmBtn) {
         confirmBtn.onclick = function() {
             console.log("Confirm button clicked, applying sort:", selectedSort);
@@ -146,7 +146,7 @@ function sortDiaries(order) {
         console.error("sort-btn not found");
         return;
     }
-    sortButton.innerHTML = `${order === 'asc' ? '오래된순&nbsp' : '최신순&nbsp'} <img src="changetime.svg" alt="Change Time" style="vertical-align: middle; width: 16px; height: 16px;">`;
+    sortButton.innerHTML = `${order === 'asc' ? '오래된순&nbsp' : '최신순&nbsp'} <img src="image/changetime.svg" alt="Change Time" style="vertical-align: middle; width: 16px; height: 16px;">`;
     
     // 전체 diaries 정렬
     diaries.sort((a, b) => {
@@ -205,7 +205,7 @@ function displayDiaries(filteredDiaries = currentFilteredDiaries) {
                 <div class="diary-date">${formattedDate} · ${diary.feeling}</div>
                 <div class="diary-title">${diary.title}</div>
                 <div class="diary-content">${previewContent}</div>
-                <span class="star" onclick="toggleFavorite(this, '${diary.date}')"><img src="${diary.favorite ? 'filledStar.svg' : 'emptyStar.svg'}" alt="Star" class="star-icon"></span>
+                <span class="star" onclick="toggleFavorite(this, '${diary.date}')"><img src="${diary.favorite ? 'image/filledStar.svg' : 'image/emptyStar.svg'}" alt="Star" class="star-icon"></span>
             </div>
         `;
         list.appendChild(item);
@@ -219,7 +219,7 @@ function toggleFavorite(star, date) {
     if (diary) {
         diary.favorite = !diary.favorite;
         const starIcon = star.querySelector('.star-icon');
-        starIcon.src = diary.favorite ? 'filledStar.svg' : 'emptyStar.svg';
+        starIcon.src = diary.favorite ? 'image/filledStar.svg' : 'image/emptyStar.svg';
         displayDiaries(currentFilteredDiaries);
     }
 }
@@ -236,7 +236,7 @@ function updatePagination(totalItems) {
         const first = document.createElement('button');
         first.disabled = currentPage === 1;
         first.className = first.disabled ? 'disabled' : 'enabled';
-        first.innerHTML = `<object type="image/svg+xml" data="Firstpage_${first.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
+        first.innerHTML = `<object type="image/svg+xml" data="image/Firstpage_${first.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
         first.onclick = () => { if (!first.disabled) { currentPage = 1; displayDiaries(currentFilteredDiaries); } };
         const firstObject = first.querySelector('object');
         if (firstObject) {
@@ -247,7 +247,7 @@ function updatePagination(totalItems) {
         const prev = document.createElement('button');
         prev.disabled = currentPage === 1;
         prev.className = prev.disabled ? 'disabled' : 'enabled';
-        prev.innerHTML = `<object type="image/svg+xml" data="prevpage_${prev.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
+        prev.innerHTML = `<object type="image/svg+xml" data="image/prevpage_${prev.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
         prev.onclick = () => { if (!prev.disabled) { currentPage--; displayDiaries(currentFilteredDiaries); } };
         const prevObject = prev.querySelector('object');
         if (prevObject) {
@@ -269,7 +269,7 @@ function updatePagination(totalItems) {
         const next = document.createElement('button');
         next.disabled = currentPage === totalPages;
         next.className = next.disabled ? 'disabled' : 'enabled';
-        next.innerHTML = `<object type="image/svg+xml" data="nextpage_${next.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
+        next.innerHTML = `<object type="image/svg+xml" data="image/nextpage_${next.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
         next.onclick = () => { if (!next.disabled) { currentPage++; displayDiaries(currentFilteredDiaries); } };
         const nextObject = next.querySelector('object');
         if (nextObject) {
@@ -280,7 +280,7 @@ function updatePagination(totalItems) {
         const last = document.createElement('button');
         last.disabled = currentPage === totalPages;
         last.className = last.disabled ? 'disabled' : 'enabled';
-        last.innerHTML = `<object type="image/svg+xml" data="Lastpage_${last.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
+        last.innerHTML = `<object type="image/svg+xml" data="image/Lastpage_${last.disabled ? 'disabled' : 'enabled'}.svg" class="pagination-icon"></object>`;
         last.onclick = () => { if (!last.disabled) { currentPage = totalPages; displayDiaries(currentFilteredDiaries); } };
         const lastObject = last.querySelector('object');
         if (lastObject) {
