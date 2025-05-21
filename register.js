@@ -131,7 +131,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 최종 확인 → 완료
   buttons.confirm.addEventListener("click", () => {
-    final.textContent = saved.nickname;
-    showStep("complete");
+    fetch("https://서버주소/api/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: saved.email,
+        password: saved.password,
+        nickname: saved.nickname
+      })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("회원가입 실패");
+      return res.json();
+    })
+    .then(() => {
+      alert("회원가입이 완료되었습니다!");
+      location.href = "login1.html"; // ✅ 자동 로그인
+    })
+    .catch(err => {
+      alert("회원가입 중 오류가 발생했습니다: " + err.message);
+    });
   });
 });
